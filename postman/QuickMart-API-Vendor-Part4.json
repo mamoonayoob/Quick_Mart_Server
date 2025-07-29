@@ -1,0 +1,474 @@
+{
+  "info": {
+    "_postman_id": "e5a0d5e0-5a0d-4e0d-8a0d-5a0d4e0d8a14",
+    "name": "QuickMart API - Vendor Part 4",
+    "description": "Vendor routes for QuickMart E-Commerce Platform - Transactions and Analytics",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Get All Transactions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/transactions?page=1&limit=10&startDate=2025-06-01&endDate=2025-07-03",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "transactions"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "startDate",
+                  "value": "2025-06-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2025-07-03"
+                }
+              ]
+            },
+            "description": "Get all transactions for this vendor"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/transactions?page=1&limit=10&startDate=2025-06-01&endDate=2025-07-03",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "transactions"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2025-06-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2025-07-03"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"transactions\": [\n    {\n      \"_id\": \"TXN-001\",\n      \"orderId\": \"ORD-001\",\n      \"amount\": 1248,\n      \"fee\": 37.44,\n      \"netAmount\": 1210.56,\n      \"paymentMethod\": \"Credit Card\",\n      \"status\": \"Completed\",\n      \"transactionDate\": \"2025-06-25\",\n      \"customer\": {\n        \"name\": \"John Doe\",\n        \"email\": \"john@example.com\"\n      }\n    },\n    {\n      \"_id\": \"TXN-002\",\n      \"orderId\": \"ORD-002\",\n      \"amount\": 899,\n      \"fee\": 26.97,\n      \"netAmount\": 872.03,\n      \"paymentMethod\": \"PayPal\",\n      \"status\": \"Completed\",\n      \"transactionDate\": \"2025-06-26\",\n      \"customer\": {\n        \"name\": \"Jane Smith\",\n        \"email\": \"jane@example.com\"\n      }\n    },\n    {\n      \"_id\": \"TXN-003\",\n      \"orderId\": \"ORD-003\",\n      \"amount\": 2196,\n      \"fee\": 65.88,\n      \"netAmount\": 2130.12,\n      \"paymentMethod\": \"Credit Card\",\n      \"status\": \"Completed\",\n      \"transactionDate\": \"2025-06-24\",\n      \"customer\": {\n        \"name\": \"Robert Johnson\",\n        \"email\": \"robert@example.com\"\n      }\n    },\n    {\n      \"_id\": \"TXN-004\",\n      \"orderId\": \"ORD-004\",\n      \"amount\": 599,\n      \"fee\": 17.97,\n      \"netAmount\": 581.03,\n      \"paymentMethod\": \"Apple Pay\",\n      \"status\": \"Completed\",\n      \"transactionDate\": \"2025-06-26\",\n      \"customer\": {\n        \"name\": \"Emily Davis\",\n        \"email\": \"emily@example.com\"\n      }\n    },\n    {\n      \"_id\": \"TXN-005\",\n      \"orderId\": \"ORD-005\",\n      \"amount\": 497,\n      \"fee\": 14.91,\n      \"netAmount\": 482.09,\n      \"paymentMethod\": \"Credit Card\",\n      \"status\": \"Refunded\",\n      \"transactionDate\": \"2025-06-23\",\n      \"refundDate\": \"2025-06-24\",\n      \"customer\": {\n        \"name\": \"Michael Wilson\",\n        \"email\": \"michael@example.com\"\n      }\n    }\n  ],\n  \"totalCount\": 5,\n  \"page\": 1,\n  \"totalPages\": 1,\n  \"summary\": {\n    \"totalAmount\": 5439,\n    \"totalFees\": 163.17,\n    \"totalNetAmount\": 5275.83,\n    \"refundedAmount\": 497\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Transaction Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/transactions/{{transactionId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "transactions", "{{transactionId}}"]
+            },
+            "description": "Get details of a specific transaction"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/transactions/TXN-001",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "transactions", "TXN-001"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"transaction\": {\n    \"_id\": \"TXN-001\",\n    \"orderId\": \"ORD-001\",\n    \"amount\": 1248,\n    \"fee\": 37.44,\n    \"netAmount\": 1210.56,\n    \"paymentMethod\": \"Credit Card\",\n    \"status\": \"Completed\",\n    \"transactionDate\": \"2025-06-25\",\n    \"settlementDate\": \"2025-06-27\",\n    \"customer\": {\n      \"name\": \"John Doe\",\n      \"email\": \"john@example.com\",\n      \"address\": \"123 Main St, New York, NY 10001\",\n      \"phone\": \"(212) 555-1234\"\n    },\n    \"paymentDetails\": {\n      \"cardType\": \"Visa\",\n      \"cardLast4\": \"1234\",\n      \"transactionId\": \"TXN123456789\"\n    },\n    \"products\": [\n      {\n        \"productId\": \"P1\",\n        \"name\": \"iPhone 13\",\n        \"price\": 999,\n        \"quantity\": 1,\n        \"subtotal\": 999\n      },\n      {\n        \"productId\": \"P2\",\n        \"name\": \"AirPods Pro\",\n        \"price\": 249,\n        \"quantity\": 1,\n        \"subtotal\": 249\n      }\n    ],\n    \"breakdown\": {\n      \"subtotal\": 1248,\n      \"tax\": 0,\n      \"shipping\": 0,\n      \"discount\": 0,\n      \"platformFee\": 37.44,\n      \"netAmount\": 1210.56\n    }\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Transaction Summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/transactions/summary?period=monthly&year=2025&month=6",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "transactions", "summary"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "monthly"
+                },
+                {
+                  "key": "year",
+                  "value": "2025"
+                },
+                {
+                  "key": "month",
+                  "value": "6"
+                }
+              ]
+            },
+            "description": "Get transaction summary for a specific period"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/transactions/summary?period=monthly&year=2025&month=6",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "transactions", "summary"],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "monthly"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2025"
+                    },
+                    {
+                      "key": "month",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"summary\": {\n    \"period\": \"June 2025\",\n    \"totalSales\": 5439,\n    \"totalOrders\": 5,\n    \"totalFees\": 163.17,\n    \"totalNetAmount\": 5275.83,\n    \"refundedAmount\": 497,\n    \"paymentMethodBreakdown\": [\n      { \"method\": \"Credit Card\", \"count\": 3, \"amount\": 3941 },\n      { \"method\": \"PayPal\", \"count\": 1, \"amount\": 899 },\n      { \"method\": \"Apple Pay\", \"count\": 1, \"amount\": 599 }\n    ],\n    \"dailyTransactions\": [\n      { \"date\": \"2025-06-23\", \"count\": 1, \"amount\": 497 },\n      { \"date\": \"2025-06-24\", \"count\": 1, \"amount\": 2196 },\n      { \"date\": \"2025-06-25\", \"count\": 1, \"amount\": 1248 },\n      { \"date\": \"2025-06-26\", \"count\": 2, \"amount\": 1498 }\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Request Payout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 5000,\n  \"payoutMethod\": \"bank_transfer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/transactions/payout",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "transactions", "payout"]
+            },
+            "description": "Request a payout of available balance"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 5000,\n  \"payoutMethod\": \"bank_transfer\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/transactions/payout",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "transactions", "payout"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Payout request submitted successfully\",\n  \"payout\": {\n    \"_id\": \"PYT-001\",\n    \"amount\": 5000,\n    \"payoutMethod\": \"bank_transfer\",\n    \"status\": \"Processing\",\n    \"requestDate\": \"2025-07-03\",\n    \"estimatedArrivalDate\": \"2025-07-05\",\n    \"reference\": \"REF123456789\"\n  },\n  \"remainingBalance\": 275.83\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Get Sales Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/analytics/sales?period=monthly&year=2025&month=6",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "analytics", "sales"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "monthly"
+                },
+                {
+                  "key": "year",
+                  "value": "2025"
+                },
+                {
+                  "key": "month",
+                  "value": "6"
+                }
+              ]
+            },
+            "description": "Get sales analytics for a specific period"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/analytics/sales?period=monthly&year=2025&month=6",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "analytics", "sales"],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "monthly"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2025"
+                    },
+                    {
+                      "key": "month",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"analytics\": {\n    \"period\": \"June 2025\",\n    \"totalSales\": 5439,\n    \"totalOrders\": 5,\n    \"averageOrderValue\": 1087.8,\n    \"dailySales\": [\n      { \"date\": \"2025-06-01\", \"sales\": 0 },\n      { \"date\": \"2025-06-02\", \"sales\": 0 },\n      { \"date\": \"2025-06-03\", \"sales\": 0 },\n      { \"date\": \"2025-06-04\", \"sales\": 0 },\n      { \"date\": \"2025-06-05\", \"sales\": 0 },\n      { \"date\": \"2025-06-06\", \"sales\": 0 },\n      { \"date\": \"2025-06-07\", \"sales\": 0 },\n      { \"date\": \"2025-06-08\", \"sales\": 0 },\n      { \"date\": \"2025-06-09\", \"sales\": 0 },\n      { \"date\": \"2025-06-10\", \"sales\": 0 },\n      { \"date\": \"2025-06-11\", \"sales\": 0 },\n      { \"date\": \"2025-06-12\", \"sales\": 0 },\n      { \"date\": \"2025-06-13\", \"sales\": 0 },\n      { \"date\": \"2025-06-14\", \"sales\": 0 },\n      { \"date\": \"2025-06-15\", \"sales\": 0 },\n      { \"date\": \"2025-06-16\", \"sales\": 0 },\n      { \"date\": \"2025-06-17\", \"sales\": 0 },\n      { \"date\": \"2025-06-18\", \"sales\": 0 },\n      { \"date\": \"2025-06-19\", \"sales\": 0 },\n      { \"date\": \"2025-06-20\", \"sales\": 0 },\n      { \"date\": \"2025-06-21\", \"sales\": 0 },\n      { \"date\": \"2025-06-22\", \"sales\": 0 },\n      { \"date\": \"2025-06-23\", \"sales\": 497 },\n      { \"date\": \"2025-06-24\", \"sales\": 2196 },\n      { \"date\": \"2025-06-25\", \"sales\": 1248 },\n      { \"date\": \"2025-06-26\", \"sales\": 1498 },\n      { \"date\": \"2025-06-27\", \"sales\": 0 },\n      { \"date\": \"2025-06-28\", \"sales\": 0 },\n      { \"date\": \"2025-06-29\", \"sales\": 0 },\n      { \"date\": \"2025-06-30\", \"sales\": 0 }\n    ],\n    \"topProducts\": [\n      { \"productId\": \"P1\", \"name\": \"iPhone 13\", \"sales\": 999, \"quantity\": 1 },\n      { \"productId\": \"P3\", \"name\": \"MacBook Pro\", \"sales\": 1999, \"quantity\": 1 },\n      { \"productId\": \"P2\", \"name\": \"AirPods Pro\", \"sales\": 249, \"quantity\": 1 },\n      { \"productId\": \"P4\", \"name\": \"iPad Air\", \"sales\": 599, \"quantity\": 1 },\n      { \"productId\": \"P5\", \"name\": \"Apple Watch Series 7\", \"sales\": 399, \"quantity\": 1 }\n    ],\n    \"categoryBreakdown\": [\n      { \"category\": \"Smartphones\", \"sales\": 1898, \"percentage\": 34.9 },\n      { \"category\": \"Laptops\", \"sales\": 1999, \"percentage\": 36.8 },\n      { \"category\": \"Audio\", \"sales\": 249, \"percentage\": 4.6 },\n      { \"category\": \"Tablets\", \"sales\": 599, \"percentage\": 11.0 },\n      { \"category\": \"Wearables\", \"sales\": 399, \"percentage\": 7.3 },\n      { \"category\": \"Accessories\", \"sales\": 295, \"percentage\": 5.4 }\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Category Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/analytics/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "analytics", "categories"]
+            },
+            "description": "Get sales analytics by product category"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/analytics/categories",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "analytics", "categories"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"categories\": [\n    {\n      \"name\": \"Smartphones\",\n      \"sales\": 1898,\n      \"percentage\": 34.9,\n      \"products\": 2,\n      \"growth\": 12.5\n    },\n    {\n      \"name\": \"Laptops\",\n      \"sales\": 1999,\n      \"percentage\": 36.8,\n      \"products\": 1,\n      \"growth\": 8.2\n    },\n    {\n      \"name\": \"Audio\",\n      \"sales\": 249,\n      \"percentage\": 4.6,\n      \"products\": 1,\n      \"growth\": 5.3\n    },\n    {\n      \"name\": \"Tablets\",\n      \"sales\": 599,\n      \"percentage\": 11.0,\n      \"products\": 1,\n      \"growth\": 15.7\n    },\n    {\n      \"name\": \"Wearables\",\n      \"sales\": 399,\n      \"percentage\": 7.3,\n      \"products\": 1,\n      \"growth\": 22.1\n    },\n    {\n      \"name\": \"Accessories\",\n      \"sales\": 295,\n      \"percentage\": 5.4,\n      \"products\": 2,\n      \"growth\": 3.8\n    }\n  ],\n  \"totalSales\": 5439,\n  \"totalProducts\": 8\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Customer Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/analytics/customers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "analytics", "customers"]
+            },
+            "description": "Get customer analytics data"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/analytics/customers",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "analytics", "customers"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"analytics\": {\n    \"totalCustomers\": 5,\n    \"newCustomers\": 2,\n    \"returningCustomers\": 3,\n    \"averageOrderValue\": 1087.8,\n    \"topCustomers\": [\n      {\n        \"name\": \"Robert Johnson\",\n        \"email\": \"robert@example.com\",\n        \"totalSpent\": 2196,\n        \"orderCount\": 1\n      },\n      {\n        \"name\": \"John Doe\",\n        \"email\": \"john@example.com\",\n        \"totalSpent\": 1248,\n        \"orderCount\": 1\n      },\n      {\n        \"name\": \"Jane Smith\",\n        \"email\": \"jane@example.com\",\n        \"totalSpent\": 899,\n        \"orderCount\": 1\n      },\n      {\n        \"name\": \"Emily Davis\",\n        \"email\": \"emily@example.com\",\n        \"totalSpent\": 599,\n        \"orderCount\": 1\n      },\n      {\n        \"name\": \"Michael Wilson\",\n        \"email\": \"michael@example.com\",\n        \"totalSpent\": 497,\n        \"orderCount\": 1\n      }\n    ],\n    \"customerRetentionRate\": 60,\n    \"customerAcquisitionCost\": 25.5,\n    \"customerLifetimeValue\": 1250.75\n  }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "transactionId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

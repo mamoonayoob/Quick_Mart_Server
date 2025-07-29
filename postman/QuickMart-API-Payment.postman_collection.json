@@ -1,0 +1,107 @@
+{
+  "info": {
+    "_postman_id": "e5a0d5e0-5a0d-4e0d-8a0d-5a0d4e0d8a0f",
+    "name": "QuickMart API - Payment",
+    "description": "Payment routes for QuickMart E-Commerce Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Payment",
+      "item": [
+        {
+          "name": "Create Payment Intent",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 9999,\n  \"currency\": \"usd\",\n  \"orderId\": \"{{orderId}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/create-payment-intent",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payment", "create-payment-intent"]
+            },
+            "description": "Create a payment intent for Stripe"
+          }
+        },
+        {
+          "name": "Webhook (Stripe)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Stripe-Signature",
+                "value": "{{stripeSignature}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"evt_123456\",\n  \"object\": \"event\",\n  \"type\": \"payment_intent.succeeded\",\n  \"data\": {\n    \"object\": {\n      \"id\": \"pi_123456\",\n      \"object\": \"payment_intent\",\n      \"amount\": 9999,\n      \"currency\": \"usd\",\n      \"metadata\": {\n        \"orderId\": \"{{orderId}}\"\n      },\n      \"status\": \"succeeded\"\n    }\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/webhook",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payment", "webhook"]
+            },
+            "description": "Handle Stripe webhook events"
+          }
+        },
+        {
+          "name": "Get Payment Methods",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/methods",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payment", "methods"]
+            },
+            "description": "Get user's saved payment methods"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "orderId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "stripeSignature",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

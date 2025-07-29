@@ -1,0 +1,301 @@
+{
+  "info": {
+    "_postman_id": "e5a0d5e0-5a0d-4e0d-8a0d-5a0d4e0d8a11",
+    "name": "QuickMart API - Vendor Part 1",
+    "description": "Vendor routes for QuickMart E-Commerce Platform - Authentication and Dashboard",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Vendor Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"vendor@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "auth", "login"]
+            },
+            "description": "Login as a vendor"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"vendor@example.com\",\n  \"password\": \"password123\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/auth/login",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "auth", "login"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjMxMjMxMjMxMjMxMjMxMjMxMjMxIiwicm9sZSI6InZlbmRvciIsImlhdCI6MTYyNTI0NjgwMCwiZXhwIjoxNjI1MzMzMjAwfQ.7w8nRDHrwaXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n  \"vendor\": {\n    \"_id\": \"61231231231231231231231\",\n    \"name\": \"Tech Gadgets Store\",\n    \"email\": \"vendor@example.com\",\n    \"phone\": \"555-123-4567\",\n    \"address\": \"123 Vendor St, Tech City, TC 10001\",\n    \"logo\": \"https://via.placeholder.com/150\",\n    \"description\": \"Your one-stop shop for all tech gadgets\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"password123\",\n  \"newPassword\": \"newPassword123\",\n  \"confirmPassword\": \"newPassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/auth/change-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "auth", "change-password"]
+            },
+            "description": "Change vendor password"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentPassword\": \"password123\",\n  \"newPassword\": \"newPassword123\",\n  \"confirmPassword\": \"newPassword123\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/auth/change-password",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "auth", "change-password"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Password changed successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Vendor Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/dashboard/stats",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "dashboard", "stats"]
+            },
+            "description": "Get vendor dashboard statistics"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/dashboard/stats",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "dashboard", "stats"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"stats\": {\n    \"totalRevenue\": 42500,\n    \"revenueChange\": 12.5,\n    \"totalOrders\": 156,\n    \"ordersChange\": 8.3,\n    \"totalProducts\": 48,\n    \"productsChange\": -2.1,\n    \"pendingDeliveries\": 12\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Recent Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/dashboard/recent-orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "dashboard", "recent-orders"]
+            },
+            "description": "Get vendor's recent orders"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/dashboard/recent-orders",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "dashboard", "recent-orders"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"orders\": [\n    {\n      \"_id\": \"ORD-001\",\n      \"customer\": { \"name\": \"John Doe\", \"email\": \"john@example.com\" },\n      \"totalAmount\": 1248,\n      \"status\": \"Pending Delivery\",\n      \"paymentMethod\": \"Credit Card\",\n      \"createdAt\": \"2025-06-25\",\n      \"products\": [\n        { \"name\": \"iPhone 13\", \"price\": 999, \"quantity\": 1 },\n        { \"name\": \"AirPods Pro\", \"price\": 249, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-002\",\n      \"customer\": { \"name\": \"Jane Smith\", \"email\": \"jane@example.com\" },\n      \"totalAmount\": 899,\n      \"status\": \"Processing\",\n      \"paymentMethod\": \"PayPal\",\n      \"createdAt\": \"2025-06-26\",\n      \"products\": [\n        { \"name\": \"Samsung Galaxy S22\", \"price\": 899, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-003\",\n      \"customer\": { \"name\": \"Robert Johnson\", \"email\": \"robert@example.com\" },\n      \"totalAmount\": 2196,\n      \"status\": \"Delivered\",\n      \"paymentMethod\": \"Credit Card\",\n      \"createdAt\": \"2025-06-24\",\n      \"products\": [\n        { \"name\": \"MacBook Pro\", \"price\": 1999, \"quantity\": 1 },\n        { \"name\": \"Magic Mouse\", \"price\": 99, \"quantity\": 1 },\n        { \"name\": \"USB-C Hub\", \"price\": 49, \"quantity\": 2 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-004\",\n      \"customer\": { \"name\": \"Emily Davis\", \"email\": \"emily@example.com\" },\n      \"totalAmount\": 599,\n      \"status\": \"Pending Delivery\",\n      \"paymentMethod\": \"Apple Pay\",\n      \"createdAt\": \"2025-06-26\",\n      \"products\": [\n        { \"name\": \"iPad Air\", \"price\": 599, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-005\",\n      \"customer\": { \"name\": \"Michael Wilson\", \"email\": \"michael@example.com\" },\n      \"totalAmount\": 497,\n      \"status\": \"Cancelled\",\n      \"paymentMethod\": \"Credit Card\",\n      \"createdAt\": \"2025-06-23\",\n      \"products\": [\n        { \"name\": \"Apple Watch Series 7\", \"price\": 399, \"quantity\": 1 },\n        { \"name\": \"Watch Band\", \"price\": 49, \"quantity\": 2 }\n      ]\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Top Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/dashboard/top-products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "dashboard", "top-products"]
+            },
+            "description": "Get vendor's top selling products"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/dashboard/top-products",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "dashboard", "top-products"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"products\": [\n    {\n      \"_id\": \"P1\",\n      \"name\": \"iPhone 13\",\n      \"price\": 999,\n      \"stock\": 24,\n      \"sold\": 42,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Smartphones\"\n    },\n    {\n      \"_id\": \"P2\",\n      \"name\": \"AirPods Pro\",\n      \"price\": 249,\n      \"stock\": 36,\n      \"sold\": 38,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Audio\"\n    },\n    {\n      \"_id\": \"P3\",\n      \"name\": \"MacBook Pro\",\n      \"price\": 1999,\n      \"stock\": 12,\n      \"sold\": 15,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Laptops\"\n    },\n    {\n      \"_id\": \"P4\",\n      \"name\": \"iPad Air\",\n      \"price\": 599,\n      \"stock\": 18,\n      \"sold\": 22,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Tablets\"\n    },\n    {\n      \"_id\": \"P5\",\n      \"name\": \"Apple Watch Series 7\",\n      \"price\": 399,\n      \"stock\": 15,\n      \"sold\": 19,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Wearables\"\n    }\n  ]\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "productId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "orderId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

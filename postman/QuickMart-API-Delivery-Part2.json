@@ -1,0 +1,595 @@
+{
+  "info": {
+    "_postman_id": "e5a0d5e0-5a0d-4e0d-8a0d-5a0d4e0d8a16",
+    "name": "QuickMart API - Delivery Part 2",
+    "description": "Delivery routes for QuickMart E-Commerce Platform - Task Status Updates and Image Upload",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Task Status Updates",
+      "item": [
+        {
+          "name": "Accept Task",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/tasks/{{taskId}}/accept",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "tasks", "{{taskId}}", "accept"]
+            },
+            "description": "Accept a delivery task"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/delivery/tasks/TASK-001/accept",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "delivery", "tasks", "TASK-001", "accept"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Task accepted successfully\",\n  \"task\": {\n    \"_id\": \"TASK-001\",\n    \"status\": \"Accepted\",\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Start Delivery",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentLocation\": {\n    \"lat\": 40.7023,\n    \"lng\": -73.9871\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/tasks/{{taskId}}/start",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "tasks", "{{taskId}}", "start"]
+            },
+            "description": "Start delivery for a task"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentLocation\": {\n    \"lat\": 40.7023,\n    \"lng\": -73.9871\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/delivery/tasks/TASK-001/start",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "delivery", "tasks", "TASK-001", "start"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Delivery started successfully\",\n  \"task\": {\n    \"_id\": \"TASK-001\",\n    \"status\": \"Out for Delivery\",\n    \"startedAt\": \"2025-07-03T10:30:00Z\",\n    \"currentLocation\": {\n      \"lat\": 40.7023,\n      \"lng\": -73.9871\n    },\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Location",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentLocation\": {\n    \"lat\": 40.7100,\n    \"lng\": -74.0050\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/tasks/{{taskId}}/location",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "tasks", "{{taskId}}", "location"]
+            },
+            "description": "Update current location for a delivery task"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentLocation\": {\n    \"lat\": 40.7100,\n    \"lng\": -74.0050\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/delivery/tasks/TASK-001/location",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "delivery", "tasks", "TASK-001", "location"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Location updated successfully\",\n  \"task\": {\n    \"_id\": \"TASK-001\",\n    \"currentLocation\": {\n      \"lat\": 40.7100,\n      \"lng\": -74.0050\n    },\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Complete Delivery",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/delivery-proof.jpg"
+                },
+                {
+                  "key": "notes",
+                  "value": "Delivered to customer at front door",
+                  "type": "text"
+                },
+                {
+                  "key": "currentLocation",
+                  "value": "{\"lat\": 40.7128, \"lng\": -74.0060}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/tasks/{{taskId}}/complete",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "tasks", "{{taskId}}", "complete"]
+            },
+            "description": "Mark a delivery task as complete with proof image"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "src": "/path/to/delivery-proof.jpg"
+                    },
+                    {
+                      "key": "notes",
+                      "value": "Delivered to customer at front door",
+                      "type": "text"
+                    },
+                    {
+                      "key": "currentLocation",
+                      "value": "{\"lat\": 40.7128, \"lng\": -74.0060}",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/delivery/tasks/TASK-001/complete",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "delivery", "tasks", "TASK-001", "complete"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Delivery completed successfully\",\n  \"task\": {\n    \"_id\": \"TASK-001\",\n    \"status\": \"Delivered\",\n    \"deliveredAt\": \"2025-07-03T11:45:00Z\",\n    \"proofImage\": \"https://res.cloudinary.com/quickmart/image/upload/v1625664000/delivery/proof/task-001.jpg\",\n    \"notes\": \"Delivered to customer at front door\",\n    \"currentLocation\": {\n      \"lat\": 40.7128,\n      \"lng\": -74.0060\n    },\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Unable to Deliver",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/delivery-attempt.jpg"
+                },
+                {
+                  "key": "reason",
+                  "value": "Customer not available",
+                  "type": "text"
+                },
+                {
+                  "key": "notes",
+                  "value": "Tried calling customer but no response",
+                  "type": "text"
+                },
+                {
+                  "key": "currentLocation",
+                  "value": "{\"lat\": 40.7128, \"lng\": -74.0060}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/tasks/{{taskId}}/unable-to-deliver",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "tasks", "{{taskId}}", "unable-to-deliver"]
+            },
+            "description": "Mark a delivery task as unable to deliver with reason and proof image"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "src": "/path/to/delivery-attempt.jpg"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "Customer not available",
+                      "type": "text"
+                    },
+                    {
+                      "key": "notes",
+                      "value": "Tried calling customer but no response",
+                      "type": "text"
+                    },
+                    {
+                      "key": "currentLocation",
+                      "value": "{\"lat\": 40.7128, \"lng\": -74.0060}",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/delivery/tasks/TASK-001/unable-to-deliver",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "delivery", "tasks", "TASK-001", "unable-to-deliver"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Delivery attempt recorded successfully\",\n  \"task\": {\n    \"_id\": \"TASK-001\",\n    \"status\": \"Failed Delivery\",\n    \"attemptedAt\": \"2025-07-03T11:45:00Z\",\n    \"proofImage\": \"https://res.cloudinary.com/quickmart/image/upload/v1625664000/delivery/proof/task-001-attempt.jpg\",\n    \"reason\": \"Customer not available\",\n    \"notes\": \"Tried calling customer but no response\",\n    \"currentLocation\": {\n      \"lat\": 40.7128,\n      \"lng\": -74.0060\n    },\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Cancel Delivery",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"Vehicle breakdown\",\n  \"notes\": \"Unable to continue delivery due to motorcycle issue\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/tasks/{{taskId}}/cancel",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "tasks", "{{taskId}}", "cancel"]
+            },
+            "description": "Cancel a delivery task"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Vehicle breakdown\",\n  \"notes\": \"Unable to continue delivery due to motorcycle issue\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/delivery/tasks/TASK-001/cancel",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "delivery", "tasks", "TASK-001", "cancel"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Delivery cancelled successfully\",\n  \"task\": {\n    \"_id\": \"TASK-001\",\n    \"status\": \"Cancelled\",\n    \"cancelledAt\": \"2025-07-03T11:45:00Z\",\n    \"reason\": \"Vehicle breakdown\",\n    \"notes\": \"Unable to continue delivery due to motorcycle issue\",\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/dashboard/stats",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "dashboard", "stats"]
+            },
+            "description": "Get delivery dashboard statistics"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/delivery/dashboard/stats",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "delivery", "dashboard", "stats"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"stats\": {\n    \"pendingTasks\": 1,\n    \"completedTasks\": 1,\n    \"cancelledTasks\": 0,\n    \"failedDeliveries\": 0,\n    \"todayDeliveries\": 1,\n    \"weeklyDeliveries\": 5,\n    \"monthlyDeliveries\": 22,\n    \"rating\": 4.8,\n    \"totalDistance\": 128.5,\n    \"averageDeliveryTime\": 35\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Earnings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/dashboard/earnings?period=monthly&year=2025&month=7",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "dashboard", "earnings"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "monthly"
+                },
+                {
+                  "key": "year",
+                  "value": "2025"
+                },
+                {
+                  "key": "month",
+                  "value": "7"
+                }
+              ]
+            },
+            "description": "Get delivery earnings statistics"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/delivery/dashboard/earnings?period=monthly&year=2025&month=7",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "delivery", "dashboard", "earnings"],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "monthly"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2025"
+                    },
+                    {
+                      "key": "month",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"earnings\": {\n    \"period\": \"July 2025\",\n    \"totalEarnings\": 325.50,\n    \"pendingPayouts\": 75.50,\n    \"completedPayouts\": 250.00,\n    \"deliveryCount\": 22,\n    \"bonuses\": 25.00,\n    \"dailyEarnings\": [\n      { \"date\": \"2025-07-01\", \"amount\": 45.00, \"deliveries\": 3 },\n      { \"date\": \"2025-07-02\", \"amount\": 60.00, \"deliveries\": 4 },\n      { \"date\": \"2025-07-03\", \"amount\": 15.00, \"deliveries\": 1 }\n    ]\n  }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "taskId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

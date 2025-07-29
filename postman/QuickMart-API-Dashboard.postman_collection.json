@@ -1,0 +1,202 @@
+{
+  "info": {
+    "_postman_id": "e7a2d8e0-7a2d-4e2d-9a2d-7a2d4e2d9a2e",
+    "name": "QuickMart API - Dashboard",
+    "description": "Admin Dashboard APIs for QuickMart E-Commerce Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Admin Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/stats",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "stats"]
+            },
+            "description": "Get dashboard statistics including revenue, orders, customers, products and their change percentages"
+          }
+        },
+        {
+          "name": "Get Sales Data (Monthly)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/sales?period=monthly&year=2025",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "sales"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "monthly"
+                },
+                {
+                  "key": "year",
+                  "value": "2025"
+                }
+              ]
+            },
+            "description": "Get monthly sales data for charts"
+          }
+        },
+        {
+          "name": "Get Sales Data (Weekly)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/sales?period=weekly",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "sales"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "weekly"
+                }
+              ]
+            },
+            "description": "Get weekly sales data for charts"
+          }
+        },
+        {
+          "name": "Get Sales Data (Daily)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/sales?period=daily",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "sales"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "daily"
+                }
+              ]
+            },
+            "description": "Get daily sales data for charts"
+          }
+        },
+        {
+          "name": "Get Category Sales",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/category-sales",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "category-sales"]
+            },
+            "description": "Get sales data by product category for pie chart"
+          }
+        },
+        {
+          "name": "Get Recent Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/recent-orders?limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "recent-orders"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Get most recent orders"
+          }
+        },
+        {
+          "name": "Get Top Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/top-products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "top-products"]
+            },
+            "description": "Get top selling products"
+          }
+        }
+      ],
+      "description": "Admin Dashboard API endpoints"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "YOUR_ADMIN_TOKEN_HERE",
+      "type": "string"
+    }
+  ]
+}

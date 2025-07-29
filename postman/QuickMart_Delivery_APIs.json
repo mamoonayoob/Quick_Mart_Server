@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "a5e7c8d9-b6f0-4e12-8a3d-9c7d8e6f5a4b",
+		"name": "QuickMart Delivery APIs",
+		"description": "Collection of APIs for delivery personnel in the QuickMart application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"delivery@example.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login as a delivery person to get authentication token"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/auth/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						},
+						"description": "Get the profile information of the currently logged in delivery person"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Name\",\n    \"phone\": \"1234567890\",\n    \"address\": \"123 Delivery St, City\",\n    \"vehicleType\": \"motorcycle\",\n    \"licenseNumber\": \"DL12345678\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						},
+						"description": "Update the profile information of the delivery person"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currentPassword\": \"password123\",\n    \"newPassword\": \"newPassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"password"
+							]
+						},
+						"description": "Change the password of the delivery person"
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication related APIs for delivery personnel"
+		},
+		{
+			"name": "Delivery Tasks",
+			"item": [
+				{
+					"name": "Get All Available Tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/delivery/tasks?status=pending&limit=10&page=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"delivery",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "pending"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get all available delivery tasks that can be accepted by the delivery person"
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/delivery/my-tasks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"delivery",
+								"my-tasks"
+							]
+						},
+						"description": "Get all tasks assigned to the current delivery person"
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/delivery/tasks/{{task_id}}/accept",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"delivery",
+								"tasks",
+								"{{task_id}}",
+								"accept"
+							]
+						},
+						"description": "Accept a delivery task. Replace {{task_id}} with the actual task ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"picked_up\",\n    \"currentLocation\": {\n        \"lat\": 37.7749,\n        \"lng\": -122.4194,\n        \"address\": \"San Francisco, CA\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/delivery/tasks/{{task_id}}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"delivery",
+								"tasks",
+								"{{task_id}}",
+								"status"
+							]
+						},
+						"description": "Update the status of a delivery task. Status can be one of: picked_up, in_transit, delivered. Replace {{task_id}} with the actual task ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Delivery Route",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/delivery/route/{{order_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"delivery",
+								"route",
+								"{{order_id}}"
+							]
+						},
+						"description": "Get the optimized delivery route for a specific order. Replace {{order_id}} with the actual order ID."
+					},
+					"response": []
+				}
+			],
+			"description": "APIs for managing delivery tasks"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-extract auth token from login response",
+					"if (pm.response.code === 200 && pm.info.requestName === \"Login\") {",
+					"    const responseJson = pm.response.json();",
+					"    if (responseJson.token) {",
+					"        pm.environment.set(\"auth_token\", responseJson.token);",
+					"        console.log(\"Auth token saved to environment\");",
+					"    }",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "task_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "order_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

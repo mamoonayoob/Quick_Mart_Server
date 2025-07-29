@@ -1,0 +1,437 @@
+{
+	"info": {
+		"_postman_id": "a8e7f5b2-9d3c-4f8e-9a1c-7f2e3d4b5c6a",
+		"name": "QuickMart Checkout API",
+		"description": "API collection for QuickMart checkout process including order creation with delivery location (latitude, longitude) and payment processing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"customer@example.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login to get authentication token"
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication endpoints"
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Get Cart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/user/cart",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"cart"
+							]
+						},
+						"description": "Get current user's cart"
+					},
+					"response": []
+				},
+				{
+					"name": "Add to Cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"{{product_id}}\",\n    \"quantity\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/cart",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"cart"
+							]
+						},
+						"description": "Add item to cart"
+					},
+					"response": []
+				}
+			],
+			"description": "Cart management endpoints"
+		},
+		{
+			"name": "Checkout",
+			"item": [
+				{
+					"name": "Create Order (COD)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderItems\": [\n        {\n            \"product\": \"{{product_id}}\",\n            \"quantity\": 2\n        }\n    ],\n    \"shippingAddress\": {\n        \"street\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zipCode\": \"10001\",\n        \"country\": \"USA\"\n    },\n    \"deliveryLocation\": {\n        \"latitude\": 40.7128,\n        \"longitude\": -74.0060\n    },\n    \"paymentMethod\": \"cod\",\n    \"deliveryType\": \"standard\",\n    \"notes\": \"Please leave at the door\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						},
+						"description": "Create a new order with Cash on Delivery payment method"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order (Card Payment)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderItems\": [\n        {\n            \"product\": \"{{product_id}}\",\n            \"quantity\": 2\n        }\n    ],\n    \"shippingAddress\": {\n        \"street\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zipCode\": \"10001\",\n        \"country\": \"USA\"\n    },\n    \"deliveryLocation\": {\n        \"latitude\": 40.7128,\n        \"longitude\": -74.0060\n    },\n    \"paymentMethod\": \"card\",\n    \"deliveryType\": \"express\",\n    \"notes\": \"Please leave at the door\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						},
+						"description": "Create a new order with Card payment method (returns Stripe client secret)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order (Wallet)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{
+    \"orderItems\": [
+        {
+            \"product\": \"{{product_id}}\",
+            \"quantity\": 1
+        }
+    ],
+    \"shippingAddress\": {
+        \"street\": \"123 Main St\",
+        \"city\": \"New York\",
+        \"state\": \"NY\",
+        \"zipCode\": \"10001\",
+        \"country\": \"USA\"
+    },
+    \"deliveryLocation\": {
+        \"latitude\": 40.7128,
+        \"longitude\": -74.0060
+    },
+    \"paymentMethod\": \"wallet\",
+    \"deliveryType\": \"standard\",
+    \"notes\": \"Please leave at the door\"
+}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						},
+						"description": "Create a new order with Wallet payment method"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Payment Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentId\": \"{{payment_id}}\",\n    \"status\": \"completed\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders/{{order_id}}/payment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"{{order_id}}",
+								"payment"
+							]
+						},
+						"description": "Update payment status for an order (admin only)"
+					},
+					"response": []
+				}
+			],
+			"description": "Checkout and order creation endpoints"
+		},
+		{
+			"name": "Order Management",
+			"item": [
+				{
+					"name": "Get My Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						},
+						"description": "Get all orders for current user"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/orders/{{order_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"{{order_id}}"
+							]
+						},
+						"description": "Get order details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/orders/history?page=1&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get order history with pagination"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"confirmed\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders/{{order_id}}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"{{order_id}}",
+								"status"
+							]
+						},
+						"description": "Update order status (vendor/admin only)"
+					},
+					"response": []
+				}
+			],
+			"description": "Order management endpoints"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "your_auth_token_here",
+			"type": "string"
+		},
+		{
+			"key": "product_id",
+			"value": "product_id_here",
+			"type": "string"
+		},
+		{
+			"key": "order_id",
+			"value": "order_id_here",
+			"type": "string"
+		},
+		{
+			"key": "payment_id",
+			"value": "payment_id_here",
+			"type": "string"
+		}
+	]
+}

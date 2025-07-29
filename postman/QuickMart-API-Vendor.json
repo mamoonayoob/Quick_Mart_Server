@@ -1,0 +1,1794 @@
+{
+  "info": {
+    "_postman_id": "e5a0d5e0-5a0d-4e0d-8a0d-5a0d4e0d8a11",
+    "name": "QuickMart API - Vendor Part 1",
+    "description": "Vendor routes for QuickMart E-Commerce Platform - Authentication and Dashboard",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Vendor Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"vendor@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Login as a vendor"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"vendor@example.com\",\n  \"password\": \"password123\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjMxMjMxMjMxMjMxMjMxMjMxMjMxIiwicm9sZSI6InZlbmRvciIsImlhdCI6MTYyNTI0NjgwMCwiZXhwIjoxNjI1MzMzMjAwfQ.7w8nRDHrwaXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n  \"vendor\": {\n    \"_id\": \"61231231231231231231231\",\n    \"name\": \"Tech Gadgets Store\",\n    \"email\": \"vendor@example.com\",\n    \"phone\": \"555-123-4567\",\n    \"address\": \"123 Vendor St, Tech City, TC 10001\",\n    \"logo\": \"https://via.placeholder.com/150\",\n    \"description\": \"Your one-stop shop for all tech gadgets\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"password123\",\n  \"newPassword\": \"newPassword123\",\n  \"confirmPassword\": \"newPassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/auth/change-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "auth",
+                "change-password"
+              ]
+            },
+            "description": "Change vendor password"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentPassword\": \"password123\",\n  \"newPassword\": \"newPassword123\",\n  \"confirmPassword\": \"newPassword123\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/auth/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "auth",
+                    "change-password"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Password changed successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Vendor Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/dashboard/stats",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "dashboard",
+                "stats"
+              ]
+            },
+            "description": "Get vendor dashboard statistics"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/dashboard/stats",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "dashboard",
+                    "stats"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"stats\": {\n    \"totalRevenue\": 42500,\n    \"revenueChange\": 12.5,\n    \"totalOrders\": 156,\n    \"ordersChange\": 8.3,\n    \"totalProducts\": 48,\n    \"productsChange\": -2.1,\n    \"pendingDeliveries\": 12\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Recent Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/dashboard/recent-orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "dashboard",
+                "recent-orders"
+              ]
+            },
+            "description": "Get vendor's recent orders"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/dashboard/recent-orders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "dashboard",
+                    "recent-orders"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"orders\": [\n    {\n      \"_id\": \"ORD-001\",\n      \"customer\": { \"name\": \"John Doe\", \"email\": \"john@example.com\" },\n      \"totalAmount\": 1248,\n      \"status\": \"Pending Delivery\",\n      \"paymentMethod\": \"Credit Card\",\n      \"createdAt\": \"2025-06-25\",\n      \"products\": [\n        { \"name\": \"iPhone 13\", \"price\": 999, \"quantity\": 1 },\n        { \"name\": \"AirPods Pro\", \"price\": 249, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-002\",\n      \"customer\": { \"name\": \"Jane Smith\", \"email\": \"jane@example.com\" },\n      \"totalAmount\": 899,\n      \"status\": \"Processing\",\n      \"paymentMethod\": \"PayPal\",\n      \"createdAt\": \"2025-06-26\",\n      \"products\": [\n        { \"name\": \"Samsung Galaxy S22\", \"price\": 899, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-003\",\n      \"customer\": { \"name\": \"Robert Johnson\", \"email\": \"robert@example.com\" },\n      \"totalAmount\": 2196,\n      \"status\": \"Delivered\",\n      \"paymentMethod\": \"Credit Card\",\n      \"createdAt\": \"2025-06-24\",\n      \"products\": [\n        { \"name\": \"MacBook Pro\", \"price\": 1999, \"quantity\": 1 },\n        { \"name\": \"Magic Mouse\", \"price\": 99, \"quantity\": 1 },\n        { \"name\": \"USB-C Hub\", \"price\": 49, \"quantity\": 2 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-004\",\n      \"customer\": { \"name\": \"Emily Davis\", \"email\": \"emily@example.com\" },\n      \"totalAmount\": 599,\n      \"status\": \"Pending Delivery\",\n      \"paymentMethod\": \"Apple Pay\",\n      \"createdAt\": \"2025-06-26\",\n      \"products\": [\n        { \"name\": \"iPad Air\", \"price\": 599, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-005\",\n      \"customer\": { \"name\": \"Michael Wilson\", \"email\": \"michael@example.com\" },\n      \"totalAmount\": 497,\n      \"status\": \"Cancelled\",\n      \"paymentMethod\": \"Credit Card\",\n      \"createdAt\": \"2025-06-23\",\n      \"products\": [\n        { \"name\": \"Apple Watch Series 7\", \"price\": 399, \"quantity\": 1 },\n        { \"name\": \"Watch Band\", \"price\": 49, \"quantity\": 2 }\n      ]\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Top Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/dashboard/top-products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "dashboard",
+                "top-products"
+              ]
+            },
+            "description": "Get vendor's top selling products"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/dashboard/top-products",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "dashboard",
+                    "top-products"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"products\": [\n    {\n      \"_id\": \"P1\",\n      \"name\": \"iPhone 13\",\n      \"price\": 999,\n      \"stock\": 24,\n      \"sold\": 42,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Smartphones\"\n    },\n    {\n      \"_id\": \"P2\",\n      \"name\": \"AirPods Pro\",\n      \"price\": 249,\n      \"stock\": 36,\n      \"sold\": 38,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Audio\"\n    },\n    {\n      \"_id\": \"P3\",\n      \"name\": \"MacBook Pro\",\n      \"price\": 1999,\n      \"stock\": 12,\n      \"sold\": 15,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Laptops\"\n    },\n    {\n      \"_id\": \"P4\",\n      \"name\": \"iPad Air\",\n      \"price\": 599,\n      \"stock\": 18,\n      \"sold\": 22,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Tablets\"\n    },\n    {\n      \"_id\": \"P5\",\n      \"name\": \"Apple Watch Series 7\",\n      \"price\": 399,\n      \"stock\": 15,\n      \"sold\": 19,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Wearables\"\n    }\n  ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Product Management",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "products"
+              ]
+            },
+            "description": "Get all products for this vendor"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "products"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"products\": [\n    {\n      \"_id\": \"P1\",\n      \"name\": \"iPhone 13\",\n      \"price\": 999,\n      \"stock\": 24,\n      \"sold\": 42,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Smartphones\",\n      \"status\": \"Active\",\n      \"description\": \"Latest iPhone model with A15 Bionic chip\",\n      \"createdAt\": \"2025-05-15\",\n      \"updatedAt\": \"2025-06-20\"\n    },\n    {\n      \"_id\": \"P2\",\n      \"name\": \"AirPods Pro\",\n      \"price\": 249,\n      \"stock\": 36,\n      \"sold\": 38,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Audio\",\n      \"status\": \"Active\",\n      \"description\": \"Active noise cancellation wireless earbuds\",\n      \"createdAt\": \"2025-05-16\",\n      \"updatedAt\": \"2025-06-19\"\n    },\n    {\n      \"_id\": \"P3\",\n      \"name\": \"MacBook Pro\",\n      \"price\": 1999,\n      \"stock\": 12,\n      \"sold\": 15,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Laptops\",\n      \"status\": \"Active\",\n      \"description\": \"Powerful laptop for professionals\",\n      \"createdAt\": \"2025-05-17\",\n      \"updatedAt\": \"2025-06-18\"\n    },\n    {\n      \"_id\": \"P4\",\n      \"name\": \"iPad Air\",\n      \"price\": 599,\n      \"stock\": 18,\n      \"sold\": 22,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Tablets\",\n      \"status\": \"Active\",\n      \"description\": \"Lightweight and powerful tablet\",\n      \"createdAt\": \"2025-05-18\",\n      \"updatedAt\": \"2025-06-17\"\n    },\n    {\n      \"_id\": \"P5\",\n      \"name\": \"Apple Watch Series 7\",\n      \"price\": 399,\n      \"stock\": 15,\n      \"sold\": 19,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Wearables\",\n      \"status\": \"Active\",\n      \"description\": \"Advanced health and fitness tracking\",\n      \"createdAt\": \"2025-05-19\",\n      \"updatedAt\": \"2025-06-16\"\n    }\n  ],\n  \"totalCount\": 5,\n  \"page\": 1,\n  \"totalPages\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Product Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/{{productId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "products",
+                "{{productId}}"
+              ]
+            },
+            "description": "Get details of a specific product"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products/P1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "products",
+                    "P1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"product\": {\n    \"_id\": \"P1\",\n    \"name\": \"iPhone 13\",\n    \"price\": 999,\n    \"stock\": 24,\n    \"sold\": 42,\n    \"image\": \"https://via.placeholder.com/50\",\n    \"supportImages\": [\n      \"https://via.placeholder.com/300/1\",\n      \"https://via.placeholder.com/300/2\",\n      \"https://via.placeholder.com/300/3\"\n    ],\n    \"category\": \"Smartphones\",\n    \"status\": \"Active\",\n    \"description\": \"Latest iPhone model with A15 Bionic chip\",\n    \"specifications\": {\n      \"processor\": \"A15 Bionic\",\n      \"storage\": \"128GB\",\n      \"display\": \"6.1-inch Super Retina XDR\",\n      \"camera\": \"Dual 12MP camera system\",\n      \"battery\": \"Up to 19 hours video playback\"\n    },\n    \"createdAt\": \"2025-05-15\",\n    \"updatedAt\": \"2025-06-20\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Add New Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Samsung Galaxy S23\",\n  \"price\": 1099,\n  \"stock\": 30,\n  \"category\": \"Smartphones\",\n  \"description\": \"Latest Samsung flagship smartphone\",\n  \"image\": \"https://via.placeholder.com/50\",\n  \"supportImages\": [\n    \"https://via.placeholder.com/300/s1\",\n    \"https://via.placeholder.com/300/s2\"\n  ],\n  \"specifications\": {\n    \"processor\": \"Snapdragon 8 Gen 2\",\n    \"storage\": \"256GB\",\n    \"display\": \"6.8-inch Dynamic AMOLED\",\n    \"camera\": \"108MP main camera\",\n    \"battery\": \"5000mAh\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "products"
+              ]
+            },
+            "description": "Add a new product"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Samsung Galaxy S23\",\n  \"price\": 1099,\n  \"stock\": 30,\n  \"category\": \"Smartphones\",\n  \"description\": \"Latest Samsung flagship smartphone\",\n  \"image\": \"https://via.placeholder.com/50\",\n  \"supportImages\": [\n    \"https://via.placeholder.com/300/s1\",\n    \"https://via.placeholder.com/300/s2\"\n  ],\n  \"specifications\": {\n    \"processor\": \"Snapdragon 8 Gen 2\",\n    \"storage\": \"256GB\",\n    \"display\": \"6.8-inch Dynamic AMOLED\",\n    \"camera\": \"108MP main camera\",\n    \"battery\": \"5000mAh\"\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "products"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product added successfully\",\n  \"product\": {\n    \"_id\": \"P6\",\n    \"name\": \"Samsung Galaxy S23\",\n    \"price\": 1099,\n    \"stock\": 30,\n    \"sold\": 0,\n    \"category\": \"Smartphones\",\n    \"status\": \"Active\",\n    \"description\": \"Latest Samsung flagship smartphone\",\n    \"image\": \"https://via.placeholder.com/50\",\n    \"supportImages\": [\n      \"https://via.placeholder.com/300/s1\",\n      \"https://via.placeholder.com/300/s2\"\n    ],\n    \"specifications\": {\n      \"processor\": \"Snapdragon 8 Gen 2\",\n      \"storage\": \"256GB\",\n      \"display\": \"6.8-inch Dynamic AMOLED\",\n      \"camera\": \"108MP main camera\",\n      \"battery\": \"5000mAh\"\n    },\n    \"createdAt\": \"2025-07-03\",\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"iPhone 13 Pro\",\n  \"price\": 1099,\n  \"stock\": 20,\n  \"description\": \"Updated iPhone 13 Pro with enhanced features\",\n  \"image\": \"https://via.placeholder.com/50\",\n  \"supportImages\": [\n    \"https://via.placeholder.com/300/ip1\",\n    \"https://via.placeholder.com/300/ip2\",\n    \"https://via.placeholder.com/300/ip3\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/{{productId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "products",
+                "{{productId}}"
+              ]
+            },
+            "description": "Update an existing product"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"iPhone 13 Pro\",\n  \"price\": 1099,\n  \"stock\": 20,\n  \"description\": \"Updated iPhone 13 Pro with enhanced features\",\n  \"image\": \"https://via.placeholder.com/50\",\n  \"supportImages\": [\n    \"https://via.placeholder.com/300/ip1\",\n    \"https://via.placeholder.com/300/ip2\",\n    \"https://via.placeholder.com/300/ip3\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products/P1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "products",
+                    "P1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product updated successfully\",\n  \"product\": {\n    \"_id\": \"P1\",\n    \"name\": \"iPhone 13 Pro\",\n    \"price\": 1099,\n    \"stock\": 20,\n    \"sold\": 42,\n    \"image\": \"https://via.placeholder.com/50\",\n    \"supportImages\": [\n      \"https://via.placeholder.com/300/ip1\",\n      \"https://via.placeholder.com/300/ip2\",\n      \"https://via.placeholder.com/300/ip3\"\n    ],\n    \"category\": \"Smartphones\",\n    \"status\": \"Active\",\n    \"description\": \"Updated iPhone 13 Pro with enhanced features\",\n    \"specifications\": {\n      \"processor\": \"A15 Bionic\",\n      \"storage\": \"128GB\",\n      \"display\": \"6.1-inch Super Retina XDR\",\n      \"camera\": \"Dual 12MP camera system\",\n      \"battery\": \"Up to 19 hours video playback\"\n    },\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/{{productId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "products",
+                "{{productId}}"
+              ]
+            },
+            "description": "Delete a product"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products/P5",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "products",
+                    "P5"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product deleted successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Product Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Disabled\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/{{productId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "products",
+                "{{productId}}",
+                "status"
+              ]
+            },
+            "description": "Enable or disable a product"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"Disabled\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products/P4/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "products",
+                    "P4",
+                    "status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product status updated successfully\",\n  \"product\": {\n    \"_id\": \"P4\",\n    \"name\": \"iPad Air\",\n    \"status\": \"Disabled\",\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Upload Product Image",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/image.jpg"
+                },
+                {
+                  "key": "type",
+                  "value": "main",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/upload-image",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "products",
+                "upload-image"
+              ]
+            },
+            "description": "Upload a product image to Cloudinary"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "src": "/path/to/image.jpg"
+                    },
+                    {
+                      "key": "type",
+                      "value": "main",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products/upload-image",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "products",
+                    "upload-image"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Image uploaded successfully\",\n  \"imageUrl\": \"https://res.cloudinary.com/demo/image/upload/v1625246800/products/image_123456.jpg\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Order Management",
+      "item": [
+        {
+          "name": "Get All Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/orders?page=1&limit=10&status=all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "orders"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "status",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Get all orders for this vendor"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/orders?page=1&limit=10&status=all",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "status",
+                      "value": "all"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"orders\": [\n    {\n      \"_id\": \"ORD-001\",\n      \"customer\": { \"name\": \"John Doe\", \"email\": \"john@example.com\" },\n      \"totalAmount\": 1248,\n      \"status\": \"Pending Delivery\",\n      \"paymentMethod\": \"Credit Card\",\n      \"paymentStatus\": \"Paid\",\n      \"createdAt\": \"2025-06-25\",\n      \"products\": [\n        { \"name\": \"iPhone 13\", \"price\": 999, \"quantity\": 1 },\n        { \"name\": \"AirPods Pro\", \"price\": 249, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-002\",\n      \"customer\": { \"name\": \"Jane Smith\", \"email\": \"jane@example.com\" },\n      \"totalAmount\": 899,\n      \"status\": \"Processing\",\n      \"paymentMethod\": \"PayPal\",\n      \"paymentStatus\": \"Paid\",\n      \"createdAt\": \"2025-06-26\",\n      \"products\": [\n        { \"name\": \"Samsung Galaxy S22\", \"price\": 899, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-003\",\n      \"customer\": { \"name\": \"Robert Johnson\", \"email\": \"robert@example.com\" },\n      \"totalAmount\": 2196,\n      \"status\": \"Delivered\",\n      \"paymentMethod\": \"Credit Card\",\n      \"paymentStatus\": \"Paid\",\n      \"createdAt\": \"2025-06-24\",\n      \"products\": [\n        { \"name\": \"MacBook Pro\", \"price\": 1999, \"quantity\": 1 },\n        { \"name\": \"Magic Mouse\", \"price\": 99, \"quantity\": 1 },\n        { \"name\": \"USB-C Hub\", \"price\": 49, \"quantity\": 2 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-004\",\n      \"customer\": { \"name\": \"Emily Davis\", \"email\": \"emily@example.com\" },\n      \"totalAmount\": 599,\n      \"status\": \"Pending Delivery\",\n      \"paymentMethod\": \"Apple Pay\",\n      \"paymentStatus\": \"Paid\",\n      \"createdAt\": \"2025-06-26\",\n      \"products\": [\n        { \"name\": \"iPad Air\", \"price\": 599, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-005\",\n      \"customer\": { \"name\": \"Michael Wilson\", \"email\": \"michael@example.com\" },\n      \"totalAmount\": 497,\n      \"status\": \"Cancelled\",\n      \"paymentMethod\": \"Credit Card\",\n      \"paymentStatus\": \"Refunded\",\n      \"createdAt\": \"2025-06-23\",\n      \"products\": [\n        { \"name\": \"Apple Watch Series 7\", \"price\": 399, \"quantity\": 1 },\n        { \"name\": \"Watch Band\", \"price\": 49, \"quantity\": 2 }\n      ]\n    }\n  ],\n  \"totalCount\": 5,\n  \"page\": 1,\n  \"totalPages\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Order Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/orders/{{orderId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "orders",
+                "{{orderId}}"
+              ]
+            },
+            "description": "Get details of a specific order"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/orders/ORD-001",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "orders",
+                    "ORD-001"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"order\": {\n    \"_id\": \"ORD-001\",\n    \"customer\": {\n      \"name\": \"John Doe\",\n      \"email\": \"john@example.com\",\n      \"address\": \"123 Main St, New York, NY 10001\",\n      \"phone\": \"(212) 555-1234\"\n    },\n    \"totalAmount\": 1248,\n    \"status\": \"Pending Delivery\",\n    \"paymentMethod\": \"Credit Card\",\n    \"paymentStatus\": \"Paid\",\n    \"createdAt\": \"2025-06-25\",\n    \"updatedAt\": \"2025-06-25\",\n    \"products\": [\n      {\n        \"productId\": \"P1\",\n        \"name\": \"iPhone 13\",\n        \"price\": 999,\n        \"quantity\": 1,\n        \"image\": \"https://via.placeholder.com/50\"\n      },\n      {\n        \"productId\": \"P2\",\n        \"name\": \"AirPods Pro\",\n        \"price\": 249,\n        \"quantity\": 1,\n        \"image\": \"https://via.placeholder.com/50\"\n      }\n    ],\n    \"shippingAddress\": {\n      \"street\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zipCode\": \"10001\",\n      \"country\": \"USA\"\n    },\n    \"deliveryInfo\": {\n      \"assignedTo\": \"61231231231231231231232\",\n      \"deliveryPersonName\": \"David Smith\",\n      \"estimatedDeliveryDate\": \"2025-06-28\",\n      \"trackingNumber\": \"TRK123456789\"\n    },\n    \"paymentInfo\": {\n      \"transactionId\": \"TXN123456789\",\n      \"paymentDate\": \"2025-06-25\",\n      \"cardLast4\": \"1234\"\n    }\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Order Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Processing\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/orders/{{orderId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "orders",
+                "{{orderId}}",
+                "status"
+              ]
+            },
+            "description": "Update the status of an order"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"Processing\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/orders/ORD-001/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "orders",
+                    "ORD-001",
+                    "status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Order status updated successfully\",\n  \"order\": {\n    \"_id\": \"ORD-001\",\n    \"status\": \"Processing\",\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Assign Delivery Person",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryPersonId\": \"61231231231231231231232\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/orders/{{orderId}}/assign-delivery",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "orders",
+                "{{orderId}}",
+                "assign-delivery"
+              ]
+            },
+            "description": "Assign a delivery person to an order"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryPersonId\": \"61231231231231231231232\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/orders/ORD-004/assign-delivery",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "orders",
+                    "ORD-004",
+                    "assign-delivery"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Delivery person assigned successfully\",\n  \"order\": {\n    \"_id\": \"ORD-004\",\n    \"status\": \"Out for Delivery\",\n    \"deliveryInfo\": {\n      \"assignedTo\": \"61231231231231231231232\",\n      \"deliveryPersonName\": \"David Smith\",\n      \"estimatedDeliveryDate\": \"2025-07-05\",\n      \"assignedAt\": \"2025-07-03\"\n    },\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Pending Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/orders/pending",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "orders",
+                "pending"
+              ]
+            },
+            "description": "Get all pending orders for this vendor"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/orders/pending",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "orders",
+                    "pending"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"orders\": [\n    {\n      \"_id\": \"ORD-001\",\n      \"customer\": { \"name\": \"John Doe\", \"email\": \"john@example.com\" },\n      \"totalAmount\": 1248,\n      \"status\": \"Pending Delivery\",\n      \"paymentMethod\": \"Credit Card\",\n      \"paymentStatus\": \"Paid\",\n      \"createdAt\": \"2025-06-25\",\n      \"products\": [\n        { \"name\": \"iPhone 13\", \"price\": 999, \"quantity\": 1 },\n        { \"name\": \"AirPods Pro\", \"price\": 249, \"quantity\": 1 }\n      ]\n    },\n    {\n      \"_id\": \"ORD-004\",\n      \"customer\": { \"name\": \"Emily Davis\", \"email\": \"emily@example.com\" },\n      \"totalAmount\": 599,\n      \"status\": \"Pending Delivery\",\n      \"paymentMethod\": \"Apple Pay\",\n      \"paymentStatus\": \"Paid\",\n      \"createdAt\": \"2025-06-26\",\n      \"products\": [\n        { \"name\": \"iPad Air\", \"price\": 599, \"quantity\": 1 }\n      ]\n    }\n  ],\n  \"totalCount\": 2\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Get All Transactions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/transactions?page=1&limit=10&startDate=2025-06-01&endDate=2025-07-03",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "transactions"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "startDate",
+                  "value": "2025-06-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2025-07-03"
+                }
+              ]
+            },
+            "description": "Get all transactions for this vendor"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/transactions?page=1&limit=10&startDate=2025-06-01&endDate=2025-07-03",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2025-06-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2025-07-03"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"transactions\": [\n    {\n      \"_id\": \"TXN-001\",\n      \"orderId\": \"ORD-001\",\n      \"amount\": 1248,\n      \"fee\": 37.44,\n      \"netAmount\": 1210.56,\n      \"paymentMethod\": \"Credit Card\",\n      \"status\": \"Completed\",\n      \"transactionDate\": \"2025-06-25\",\n      \"customer\": {\n        \"name\": \"John Doe\",\n        \"email\": \"john@example.com\"\n      }\n    },\n    {\n      \"_id\": \"TXN-002\",\n      \"orderId\": \"ORD-002\",\n      \"amount\": 899,\n      \"fee\": 26.97,\n      \"netAmount\": 872.03,\n      \"paymentMethod\": \"PayPal\",\n      \"status\": \"Completed\",\n      \"transactionDate\": \"2025-06-26\",\n      \"customer\": {\n        \"name\": \"Jane Smith\",\n        \"email\": \"jane@example.com\"\n      }\n    },\n    {\n      \"_id\": \"TXN-003\",\n      \"orderId\": \"ORD-003\",\n      \"amount\": 2196,\n      \"fee\": 65.88,\n      \"netAmount\": 2130.12,\n      \"paymentMethod\": \"Credit Card\",\n      \"status\": \"Completed\",\n      \"transactionDate\": \"2025-06-24\",\n      \"customer\": {\n        \"name\": \"Robert Johnson\",\n        \"email\": \"robert@example.com\"\n      }\n    },\n    {\n      \"_id\": \"TXN-004\",\n      \"orderId\": \"ORD-004\",\n      \"amount\": 599,\n      \"fee\": 17.97,\n      \"netAmount\": 581.03,\n      \"paymentMethod\": \"Apple Pay\",\n      \"status\": \"Completed\",\n      \"transactionDate\": \"2025-06-26\",\n      \"customer\": {\n        \"name\": \"Emily Davis\",\n        \"email\": \"emily@example.com\"\n      }\n    },\n    {\n      \"_id\": \"TXN-005\",\n      \"orderId\": \"ORD-005\",\n      \"amount\": 497,\n      \"fee\": 14.91,\n      \"netAmount\": 482.09,\n      \"paymentMethod\": \"Credit Card\",\n      \"status\": \"Refunded\",\n      \"transactionDate\": \"2025-06-23\",\n      \"refundDate\": \"2025-06-24\",\n      \"customer\": {\n        \"name\": \"Michael Wilson\",\n        \"email\": \"michael@example.com\"\n      }\n    }\n  ],\n  \"totalCount\": 5,\n  \"page\": 1,\n  \"totalPages\": 1,\n  \"summary\": {\n    \"totalAmount\": 5439,\n    \"totalFees\": 163.17,\n    \"totalNetAmount\": 5275.83,\n    \"refundedAmount\": 497\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Transaction Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/transactions/{{transactionId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "transactions",
+                "{{transactionId}}"
+              ]
+            },
+            "description": "Get details of a specific transaction"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/transactions/TXN-001",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "transactions",
+                    "TXN-001"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"transaction\": {\n    \"_id\": \"TXN-001\",\n    \"orderId\": \"ORD-001\",\n    \"amount\": 1248,\n    \"fee\": 37.44,\n    \"netAmount\": 1210.56,\n    \"paymentMethod\": \"Credit Card\",\n    \"status\": \"Completed\",\n    \"transactionDate\": \"2025-06-25\",\n    \"settlementDate\": \"2025-06-27\",\n    \"customer\": {\n      \"name\": \"John Doe\",\n      \"email\": \"john@example.com\",\n      \"address\": \"123 Main St, New York, NY 10001\",\n      \"phone\": \"(212) 555-1234\"\n    },\n    \"paymentDetails\": {\n      \"cardType\": \"Visa\",\n      \"cardLast4\": \"1234\",\n      \"transactionId\": \"TXN123456789\"\n    },\n    \"products\": [\n      {\n        \"productId\": \"P1\",\n        \"name\": \"iPhone 13\",\n        \"price\": 999,\n        \"quantity\": 1,\n        \"subtotal\": 999\n      },\n      {\n        \"productId\": \"P2\",\n        \"name\": \"AirPods Pro\",\n        \"price\": 249,\n        \"quantity\": 1,\n        \"subtotal\": 249\n      }\n    ],\n    \"breakdown\": {\n      \"subtotal\": 1248,\n      \"tax\": 0,\n      \"shipping\": 0,\n      \"discount\": 0,\n      \"platformFee\": 37.44,\n      \"netAmount\": 1210.56\n    }\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Transaction Summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/transactions/summary?period=monthly&year=2025&month=6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "transactions",
+                "summary"
+              ],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "monthly"
+                },
+                {
+                  "key": "year",
+                  "value": "2025"
+                },
+                {
+                  "key": "month",
+                  "value": "6"
+                }
+              ]
+            },
+            "description": "Get transaction summary for a specific period"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/transactions/summary?period=monthly&year=2025&month=6",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "transactions",
+                    "summary"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "monthly"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2025"
+                    },
+                    {
+                      "key": "month",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"summary\": {\n    \"period\": \"June 2025\",\n    \"totalSales\": 5439,\n    \"totalOrders\": 5,\n    \"totalFees\": 163.17,\n    \"totalNetAmount\": 5275.83,\n    \"refundedAmount\": 497,\n    \"paymentMethodBreakdown\": [\n      { \"method\": \"Credit Card\", \"count\": 3, \"amount\": 3941 },\n      { \"method\": \"PayPal\", \"count\": 1, \"amount\": 899 },\n      { \"method\": \"Apple Pay\", \"count\": 1, \"amount\": 599 }\n    ],\n    \"dailyTransactions\": [\n      { \"date\": \"2025-06-23\", \"count\": 1, \"amount\": 497 },\n      { \"date\": \"2025-06-24\", \"count\": 1, \"amount\": 2196 },\n      { \"date\": \"2025-06-25\", \"count\": 1, \"amount\": 1248 },\n      { \"date\": \"2025-06-26\", \"count\": 2, \"amount\": 1498 }\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Request Payout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 5000,\n  \"payoutMethod\": \"bank_transfer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/transactions/payout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "transactions",
+                "payout"
+              ]
+            },
+            "description": "Request a payout of available balance"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 5000,\n  \"payoutMethod\": \"bank_transfer\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/transactions/payout",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "transactions",
+                    "payout"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Payout request submitted successfully\",\n  \"payout\": {\n    \"_id\": \"PYT-001\",\n    \"amount\": 5000,\n    \"payoutMethod\": \"bank_transfer\",\n    \"status\": \"Processing\",\n    \"requestDate\": \"2025-07-03\",\n    \"estimatedArrivalDate\": \"2025-07-05\",\n    \"reference\": \"REF123456789\"\n  },\n  \"remainingBalance\": 275.83\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Get Sales Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/analytics/sales?period=monthly&year=2025&month=6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "analytics",
+                "sales"
+              ],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "monthly"
+                },
+                {
+                  "key": "year",
+                  "value": "2025"
+                },
+                {
+                  "key": "month",
+                  "value": "6"
+                }
+              ]
+            },
+            "description": "Get sales analytics for a specific period"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/analytics/sales?period=monthly&year=2025&month=6",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "analytics",
+                    "sales"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "monthly"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2025"
+                    },
+                    {
+                      "key": "month",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"analytics\": {\n    \"period\": \"June 2025\",\n    \"totalSales\": 5439,\n    \"totalOrders\": 5,\n    \"averageOrderValue\": 1087.8,\n    \"dailySales\": [\n      { \"date\": \"2025-06-01\", \"sales\": 0 },\n      { \"date\": \"2025-06-02\", \"sales\": 0 },\n      { \"date\": \"2025-06-03\", \"sales\": 0 },\n      { \"date\": \"2025-06-04\", \"sales\": 0 },\n      { \"date\": \"2025-06-05\", \"sales\": 0 },\n      { \"date\": \"2025-06-06\", \"sales\": 0 },\n      { \"date\": \"2025-06-07\", \"sales\": 0 },\n      { \"date\": \"2025-06-08\", \"sales\": 0 },\n      { \"date\": \"2025-06-09\", \"sales\": 0 },\n      { \"date\": \"2025-06-10\", \"sales\": 0 },\n      { \"date\": \"2025-06-11\", \"sales\": 0 },\n      { \"date\": \"2025-06-12\", \"sales\": 0 },\n      { \"date\": \"2025-06-13\", \"sales\": 0 },\n      { \"date\": \"2025-06-14\", \"sales\": 0 },\n      { \"date\": \"2025-06-15\", \"sales\": 0 },\n      { \"date\": \"2025-06-16\", \"sales\": 0 },\n      { \"date\": \"2025-06-17\", \"sales\": 0 },\n      { \"date\": \"2025-06-18\", \"sales\": 0 },\n      { \"date\": \"2025-06-19\", \"sales\": 0 },\n      { \"date\": \"2025-06-20\", \"sales\": 0 },\n      { \"date\": \"2025-06-21\", \"sales\": 0 },\n      { \"date\": \"2025-06-22\", \"sales\": 0 },\n      { \"date\": \"2025-06-23\", \"sales\": 497 },\n      { \"date\": \"2025-06-24\", \"sales\": 2196 },\n      { \"date\": \"2025-06-25\", \"sales\": 1248 },\n      { \"date\": \"2025-06-26\", \"sales\": 1498 },\n      { \"date\": \"2025-06-27\", \"sales\": 0 },\n      { \"date\": \"2025-06-28\", \"sales\": 0 },\n      { \"date\": \"2025-06-29\", \"sales\": 0 },\n      { \"date\": \"2025-06-30\", \"sales\": 0 }\n    ],\n    \"topProducts\": [\n      { \"productId\": \"P1\", \"name\": \"iPhone 13\", \"sales\": 999, \"quantity\": 1 },\n      { \"productId\": \"P3\", \"name\": \"MacBook Pro\", \"sales\": 1999, \"quantity\": 1 },\n      { \"productId\": \"P2\", \"name\": \"AirPods Pro\", \"sales\": 249, \"quantity\": 1 },\n      { \"productId\": \"P4\", \"name\": \"iPad Air\", \"sales\": 599, \"quantity\": 1 },\n      { \"productId\": \"P5\", \"name\": \"Apple Watch Series 7\", \"sales\": 399, \"quantity\": 1 }\n    ],\n    \"categoryBreakdown\": [\n      { \"category\": \"Smartphones\", \"sales\": 1898, \"percentage\": 34.9 },\n      { \"category\": \"Laptops\", \"sales\": 1999, \"percentage\": 36.8 },\n      { \"category\": \"Audio\", \"sales\": 249, \"percentage\": 4.6 },\n      { \"category\": \"Tablets\", \"sales\": 599, \"percentage\": 11.0 },\n      { \"category\": \"Wearables\", \"sales\": 399, \"percentage\": 7.3 },\n      { \"category\": \"Accessories\", \"sales\": 295, \"percentage\": 5.4 }\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Category Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/analytics/categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "analytics",
+                "categories"
+              ]
+            },
+            "description": "Get sales analytics by product category"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/analytics/categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "analytics",
+                    "categories"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"categories\": [\n    {\n      \"name\": \"Smartphones\",\n      \"sales\": 1898,\n      \"percentage\": 34.9,\n      \"products\": 2,\n      \"growth\": 12.5\n    },\n    {\n      \"name\": \"Laptops\",\n      \"sales\": 1999,\n      \"percentage\": 36.8,\n      \"products\": 1,\n      \"growth\": 8.2\n    },\n    {\n      \"name\": \"Audio\",\n      \"sales\": 249,\n      \"percentage\": 4.6,\n      \"products\": 1,\n      \"growth\": 5.3\n    },\n    {\n      \"name\": \"Tablets\",\n      \"sales\": 599,\n      \"percentage\": 11.0,\n      \"products\": 1,\n      \"growth\": 15.7\n    },\n    {\n      \"name\": \"Wearables\",\n      \"sales\": 399,\n      \"percentage\": 7.3,\n      \"products\": 1,\n      \"growth\": 22.1\n    },\n    {\n      \"name\": \"Accessories\",\n      \"sales\": 295,\n      \"percentage\": 5.4,\n      \"products\": 2,\n      \"growth\": 3.8\n    }\n  ],\n  \"totalSales\": 5439,\n  \"totalProducts\": 8\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Customer Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/analytics/customers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vendor",
+                "analytics",
+                "customers"
+              ]
+            },
+            "description": "Get customer analytics data"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/analytics/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vendor",
+                    "analytics",
+                    "customers"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"analytics\": {\n    \"totalCustomers\": 5,\n    \"newCustomers\": 2,\n    \"returningCustomers\": 3,\n    \"averageOrderValue\": 1087.8,\n    \"topCustomers\": [\n      {\n        \"name\": \"Robert Johnson\",\n        \"email\": \"robert@example.com\",\n        \"totalSpent\": 2196,\n        \"orderCount\": 1\n      },\n      {\n        \"name\": \"John Doe\",\n        \"email\": \"john@example.com\",\n        \"totalSpent\": 1248,\n        \"orderCount\": 1\n      },\n      {\n        \"name\": \"Jane Smith\",\n        \"email\": \"jane@example.com\",\n        \"totalSpent\": 899,\n        \"orderCount\": 1\n      },\n      {\n        \"name\": \"Emily Davis\",\n        \"email\": \"emily@example.com\",\n        \"totalSpent\": 599,\n        \"orderCount\": 1\n      },\n      {\n        \"name\": \"Michael Wilson\",\n        \"email\": \"michael@example.com\",\n        \"totalSpent\": 497,\n        \"orderCount\": 1\n      }\n    ],\n    \"customerRetentionRate\": 60,\n    \"customerAcquisitionCost\": 25.5,\n    \"customerLifetimeValue\": 1250.75\n  }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "productId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "orderId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

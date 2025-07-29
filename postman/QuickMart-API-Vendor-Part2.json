@@ -1,0 +1,439 @@
+{
+  "info": {
+    "_postman_id": "e5a0d5e0-5a0d-4e0d-8a0d-5a0d4e0d8a12",
+    "name": "QuickMart API - Vendor Part 2",
+    "description": "Vendor routes for QuickMart E-Commerce Platform - Product Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Product Management",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "products"]
+            },
+            "description": "Get all products for this vendor"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "products"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"products\": [\n    {\n      \"_id\": \"P1\",\n      \"name\": \"iPhone 13\",\n      \"price\": 999,\n      \"stock\": 24,\n      \"sold\": 42,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Smartphones\",\n      \"status\": \"Active\",\n      \"description\": \"Latest iPhone model with A15 Bionic chip\",\n      \"createdAt\": \"2025-05-15\",\n      \"updatedAt\": \"2025-06-20\"\n    },\n    {\n      \"_id\": \"P2\",\n      \"name\": \"AirPods Pro\",\n      \"price\": 249,\n      \"stock\": 36,\n      \"sold\": 38,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Audio\",\n      \"status\": \"Active\",\n      \"description\": \"Active noise cancellation wireless earbuds\",\n      \"createdAt\": \"2025-05-16\",\n      \"updatedAt\": \"2025-06-19\"\n    },\n    {\n      \"_id\": \"P3\",\n      \"name\": \"MacBook Pro\",\n      \"price\": 1999,\n      \"stock\": 12,\n      \"sold\": 15,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Laptops\",\n      \"status\": \"Active\",\n      \"description\": \"Powerful laptop for professionals\",\n      \"createdAt\": \"2025-05-17\",\n      \"updatedAt\": \"2025-06-18\"\n    },\n    {\n      \"_id\": \"P4\",\n      \"name\": \"iPad Air\",\n      \"price\": 599,\n      \"stock\": 18,\n      \"sold\": 22,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Tablets\",\n      \"status\": \"Active\",\n      \"description\": \"Lightweight and powerful tablet\",\n      \"createdAt\": \"2025-05-18\",\n      \"updatedAt\": \"2025-06-17\"\n    },\n    {\n      \"_id\": \"P5\",\n      \"name\": \"Apple Watch Series 7\",\n      \"price\": 399,\n      \"stock\": 15,\n      \"sold\": 19,\n      \"image\": \"https://via.placeholder.com/50\",\n      \"category\": \"Wearables\",\n      \"status\": \"Active\",\n      \"description\": \"Advanced health and fitness tracking\",\n      \"createdAt\": \"2025-05-19\",\n      \"updatedAt\": \"2025-06-16\"\n    }\n  ],\n  \"totalCount\": 5,\n  \"page\": 1,\n  \"totalPages\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Product Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "products", "{{productId}}"]
+            },
+            "description": "Get details of a specific product"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products/P1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "products", "P1"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"product\": {\n    \"_id\": \"P1\",\n    \"name\": \"iPhone 13\",\n    \"price\": 999,\n    \"stock\": 24,\n    \"sold\": 42,\n    \"image\": \"https://via.placeholder.com/50\",\n    \"supportImages\": [\n      \"https://via.placeholder.com/300/1\",\n      \"https://via.placeholder.com/300/2\",\n      \"https://via.placeholder.com/300/3\"\n    ],\n    \"category\": \"Smartphones\",\n    \"status\": \"Active\",\n    \"description\": \"Latest iPhone model with A15 Bionic chip\",\n    \"specifications\": {\n      \"processor\": \"A15 Bionic\",\n      \"storage\": \"128GB\",\n      \"display\": \"6.1-inch Super Retina XDR\",\n      \"camera\": \"Dual 12MP camera system\",\n      \"battery\": \"Up to 19 hours video playback\"\n    },\n    \"createdAt\": \"2025-05-15\",\n    \"updatedAt\": \"2025-06-20\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Add New Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Samsung Galaxy S23\",\n  \"price\": 1099,\n  \"stock\": 30,\n  \"category\": \"Smartphones\",\n  \"description\": \"Latest Samsung flagship smartphone\",\n  \"image\": \"https://via.placeholder.com/50\",\n  \"supportImages\": [\n    \"https://via.placeholder.com/300/s1\",\n    \"https://via.placeholder.com/300/s2\"\n  ],\n  \"specifications\": {\n    \"processor\": \"Snapdragon 8 Gen 2\",\n    \"storage\": \"256GB\",\n    \"display\": \"6.8-inch Dynamic AMOLED\",\n    \"camera\": \"108MP main camera\",\n    \"battery\": \"5000mAh\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "products"]
+            },
+            "description": "Add a new product"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Samsung Galaxy S23\",\n  \"price\": 1099,\n  \"stock\": 30,\n  \"category\": \"Smartphones\",\n  \"description\": \"Latest Samsung flagship smartphone\",\n  \"image\": \"https://via.placeholder.com/50\",\n  \"supportImages\": [\n    \"https://via.placeholder.com/300/s1\",\n    \"https://via.placeholder.com/300/s2\"\n  ],\n  \"specifications\": {\n    \"processor\": \"Snapdragon 8 Gen 2\",\n    \"storage\": \"256GB\",\n    \"display\": \"6.8-inch Dynamic AMOLED\",\n    \"camera\": \"108MP main camera\",\n    \"battery\": \"5000mAh\"\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "products"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product added successfully\",\n  \"product\": {\n    \"_id\": \"P6\",\n    \"name\": \"Samsung Galaxy S23\",\n    \"price\": 1099,\n    \"stock\": 30,\n    \"sold\": 0,\n    \"category\": \"Smartphones\",\n    \"status\": \"Active\",\n    \"description\": \"Latest Samsung flagship smartphone\",\n    \"image\": \"https://via.placeholder.com/50\",\n    \"supportImages\": [\n      \"https://via.placeholder.com/300/s1\",\n      \"https://via.placeholder.com/300/s2\"\n    ],\n    \"specifications\": {\n      \"processor\": \"Snapdragon 8 Gen 2\",\n      \"storage\": \"256GB\",\n      \"display\": \"6.8-inch Dynamic AMOLED\",\n      \"camera\": \"108MP main camera\",\n      \"battery\": \"5000mAh\"\n    },\n    \"createdAt\": \"2025-07-03\",\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"iPhone 13 Pro\",\n  \"price\": 1099,\n  \"stock\": 20,\n  \"description\": \"Updated iPhone 13 Pro with enhanced features\",\n  \"image\": \"https://via.placeholder.com/50\",\n  \"supportImages\": [\n    \"https://via.placeholder.com/300/ip1\",\n    \"https://via.placeholder.com/300/ip2\",\n    \"https://via.placeholder.com/300/ip3\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "products", "{{productId}}"]
+            },
+            "description": "Update an existing product"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"iPhone 13 Pro\",\n  \"price\": 1099,\n  \"stock\": 20,\n  \"description\": \"Updated iPhone 13 Pro with enhanced features\",\n  \"image\": \"https://via.placeholder.com/50\",\n  \"supportImages\": [\n    \"https://via.placeholder.com/300/ip1\",\n    \"https://via.placeholder.com/300/ip2\",\n    \"https://via.placeholder.com/300/ip3\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products/P1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "products", "P1"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product updated successfully\",\n  \"product\": {\n    \"_id\": \"P1\",\n    \"name\": \"iPhone 13 Pro\",\n    \"price\": 1099,\n    \"stock\": 20,\n    \"sold\": 42,\n    \"image\": \"https://via.placeholder.com/50\",\n    \"supportImages\": [\n      \"https://via.placeholder.com/300/ip1\",\n      \"https://via.placeholder.com/300/ip2\",\n      \"https://via.placeholder.com/300/ip3\"\n    ],\n    \"category\": \"Smartphones\",\n    \"status\": \"Active\",\n    \"description\": \"Updated iPhone 13 Pro with enhanced features\",\n    \"specifications\": {\n      \"processor\": \"A15 Bionic\",\n      \"storage\": \"128GB\",\n      \"display\": \"6.1-inch Super Retina XDR\",\n      \"camera\": \"Dual 12MP camera system\",\n      \"battery\": \"Up to 19 hours video playback\"\n    },\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "products", "{{productId}}"]
+            },
+            "description": "Delete a product"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products/P5",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "products", "P5"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product deleted successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Product Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Disabled\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/{{productId}}/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "products", "{{productId}}", "status"]
+            },
+            "description": "Enable or disable a product"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"Disabled\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products/P4/status",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "products", "P4", "status"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product status updated successfully\",\n  \"product\": {\n    \"_id\": \"P4\",\n    \"name\": \"iPad Air\",\n    \"status\": \"Disabled\",\n    \"updatedAt\": \"2025-07-03\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Upload Product Image",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/path/to/image.jpg"
+                },
+                {
+                  "key": "type",
+                  "value": "main",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/upload-image",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "products", "upload-image"]
+            },
+            "description": "Upload a product image to Cloudinary"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "src": "/path/to/image.jpg"
+                    },
+                    {
+                      "key": "type",
+                      "value": "main",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/vendor/products/upload-image",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "vendor", "products", "upload-image"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Image uploaded successfully\",\n  \"imageUrl\": \"https://res.cloudinary.com/demo/image/upload/v1625246800/products/image_123456.jpg\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "productId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# Python requirements for QuickMart Demand Forecasting Service
+# Install with: pip install -r requirements.txt
+
+# Core forecasting library - simplified for compatibility
+prophet
+
+# Data manipulation and analysis
+pandas
+numpy
+
+# Date and time utilities
+python-dateutil

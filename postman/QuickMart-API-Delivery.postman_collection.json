@@ -1,0 +1,135 @@
+{
+  "info": {
+    "_postman_id": "e5a0d5e0-5a0d-4e0d-8a0d-5a0d4e0d8a12",
+    "name": "QuickMart API - Delivery",
+    "description": "Delivery routes for QuickMart E-Commerce Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Delivery",
+      "item": [
+        {
+          "name": "Get Delivery Tasks",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "tasks"]
+            },
+            "description": "Get delivery tasks"
+          }
+        },
+        {
+          "name": "Accept Delivery Task",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/tasks/{{taskId}}/accept",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "tasks", "{{taskId}}", "accept"]
+            },
+            "description": "Accept a delivery task"
+          }
+        },
+        {
+          "name": "Update Delivery Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"in_transit\",\n  \"currentLocation\": {\n    \"lat\": 40.7128,\n    \"lng\": -74.0060\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/tasks/{{taskId}}/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "tasks", "{{taskId}}", "status"]
+            },
+            "description": "Update delivery status"
+          }
+        },
+        {
+          "name": "Get Delivery Route",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/route/{{orderId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "route", "{{orderId}}"]
+            },
+            "description": "Get optimized delivery route"
+          }
+        },
+        {
+          "name": "Get My Tasks",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery/my-tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "delivery", "my-tasks"]
+            },
+            "description": "Get delivery person's current tasks"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "orderId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "taskId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

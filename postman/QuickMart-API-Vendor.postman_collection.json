@@ -1,0 +1,130 @@
+{
+  "info": {
+    "_postman_id": "e5a0d5e0-5a0d-4e0d-8a0d-5a0d4e0d8a11",
+    "name": "QuickMart API - Vendor",
+    "description": "Vendor routes for QuickMart E-Commerce Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Vendor",
+      "item": [
+        {
+          "name": "Get Vendor Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "products"]
+            },
+            "description": "Get vendor products"
+          }
+        },
+        {
+          "name": "Get Vendor Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "orders"]
+            },
+            "description": "Get vendor orders"
+          }
+        },
+        {
+          "name": "Get Vendor Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/analytics",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "analytics"]
+            },
+            "description": "Get vendor analytics"
+          }
+        },
+        {
+          "name": "Update Product Inventory",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stock\": 25,\n  \"isAvailable\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/products/{{productId}}/inventory",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "products", "{{productId}}", "inventory"]
+            },
+            "description": "Update product inventory"
+          }
+        },
+        {
+          "name": "Get Low Stock Alerts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/vendor/inventory/low-stock",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vendor", "inventory", "low-stock"]
+            },
+            "description": "Get low stock alerts"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "productId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
