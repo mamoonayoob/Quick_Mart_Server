@@ -1,18 +1,28 @@
 const asyncHandler = require("../middleware/async");
 const OpenAI = require("openai");
+const fetch = require("node-fetch"); // required for custom fetch
 
+// ✅ Configure OpenAI with OpenRouter + custom auth
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: "not-needed", // dummy, real key added manually below
+  baseURL: "https://openrouter.ai/api/v1",
+  fetch: (url, options) => {
+    options.headers = {
+      ...options.headers,
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, // important
+    };
+    return fetch(url, options);
+  },
 });
 
 /**
- * @desc    Process chat message with OpenAI
+ * @desc    Process chat message with OpenRouter (like OpenAI)
  * @route   POST /api/chat
  * @access  Public
  */
 exports.processChat = asyncHandler(async (req, res) => {
   const { message } = req.body;
-  console.log("object", req.body);
+  console.log("Received message:", message);
 
   if (!message) {
     return res.status(400).json({
@@ -24,13 +34,13 @@ exports.processChat = asyncHandler(async (req, res) => {
   if (!process.env.OPENAI_API_KEY) {
     return res.status(500).json({
       success: false,
-      message: "OpenAI API key is not configured",
+      message: "OpenRouter API key is not configured",
     });
   }
 
   try {
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "mistralai/mistral-7b-instruct:free", // Or any OpenRouter model
       messages: [
         {
           role: "system",
@@ -46,7 +56,7 @@ exports.processChat = asyncHandler(async (req, res) => {
       reply: completion.choices[0].message.content,
     });
   } catch (error) {
-    console.error("OpenAI API Error:", error);
+    console.error("OpenRouter API Error:", error);
 
     res.status(500).json({
       success: false,
